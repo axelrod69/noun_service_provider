@@ -10,7 +10,7 @@ import 'package:dio/dio.dart';
 import 'package:provider/provider.dart';
 import '../providers/user_data_container.dart';
 import 'package:path/path.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/button.dart';
 import '../utilities/constants.dart';
@@ -52,13 +52,13 @@ class _FormScreenState extends State<FormScreen> {
   String fileTwoName = '';
   String fileThreeName = '';
 
-  @override
-  void initState() {
-    _userData = Provider.of<UserDataContainer>(this.context, listen: false);
-    _token = _userData.token;
-    _userID = _userData.id;
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   _userData = Provider.of<UserDataContainer>(this.context, listen: false);
+  //   _token = _userData.token;
+  //   _userID = _userData.id;
+  //   super.initState();
+  // }
 
   Future pickImageAadharFront(ImageSource source) async {
     try {
@@ -110,6 +110,8 @@ class _FormScreenState extends State<FormScreen> {
     filePathTwo,
     filePathThree,
   ) async {
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+
     if (_formKey.currentState!.validate()) {
       print('submitted');
       print('name $_name');
@@ -127,13 +129,13 @@ class _FormScreenState extends State<FormScreen> {
       print('filePathThree: $fileThreeName');
       print('imgAadharFront: $imageAadharFront');
       print('imgAadharBack: $imageAadharBack');
-      print('token: $_token');
+      // print('token: $_token');
       print('userID: $_userID');
       String fileName = basename(filePath.path);
       String fileNameTwo = basename(filePathTwo.path);
       String fileNameThree = basename(filePathThree.path);
       var formData = FormData.fromMap({
-        "userId": _userID,
+        // "userId": _userID,
         "name": _name,
         "email": _email,
         "panNumber": _panNo,
@@ -151,14 +153,16 @@ class _FormScreenState extends State<FormScreen> {
         "bankName": _bankName,
         "bankAccountNo": _accountNo,
         "bankIfscCode": _ifscCode,
-        "bankUpi": _upiCode,
+        "banlUpi": _upiCode,
       });
 
+      print('FORM DATA: $formData');
+
       var response = await Dio()
-          .post('$baseURL/station/service-provider-documents-upload',
+          .post('$baseURL/station/provider/details-upload',
               data: formData,
               options: Options(headers: {
-                'Authorization': 'Bearer $_token',
+                'Authorization': 'Bearer ${localStorage.getString('token')}',
                 'Content-Type': 'application/json'
               }))
           .then((_) => Navigator.of(context).push(

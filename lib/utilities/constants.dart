@@ -19,14 +19,14 @@ final kContainer = BoxDecoration(
   boxShadow: const [
     BoxShadow(
       color: Color(0xff00ffba),
-      offset: Offset(0, 0),
-      blurRadius: 15,
-      spreadRadius: 0.5,
+      offset: Offset(1, 1), //change done
+      blurRadius: 3, //change done
+      spreadRadius: 0.3, //change done
     ),
     BoxShadow(
       color: Colors.black,
-      offset: Offset(-4, -4),
-      blurRadius: 10,
+      offset: Offset(-2, -2), //change done
+      blurRadius: 3, //change done
     )
   ],
 );

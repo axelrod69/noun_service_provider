@@ -79,8 +79,8 @@ class StationScreenState extends State<StationScreen> {
                   boxShadow: [
                     BoxShadow(
                       color: color,
-                      blurRadius: 10,
-                      offset: Offset(1, 2),
+                      blurRadius: 3, //change done
+                      offset: Offset(1, 1), //change done
                     )
                   ],
                 ),
@@ -119,9 +119,10 @@ class StationScreenState extends State<StationScreen> {
                               border: Border.all(color: color, width: 3),
                               boxShadow: [
                                 BoxShadow(
-                                    color: color,
-                                    blurRadius: 5,
-                                    offset: Offset(1, 2))
+                                  color: color,
+                                  blurRadius: 3, //change done
+                                  offset: Offset(1, 1),
+                                ), //change done
                               ]),
                         ),
                       ),

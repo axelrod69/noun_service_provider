@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-
 import '../widgets/app_bar.dart';
 import '../widgets/carousel_widget.dart';
 import '../widgets/chart_widget.dart';
 import '../screens/form_screen.dart';
+import 'package:provider/provider.dart';
+import '../providers/providerDetails.dart';
 
 class DashboardScreen extends StatefulWidget {
   //DashboardScreen({Key? key}) : super(key: key);
@@ -17,6 +18,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
+    final detailsProvider =
+        Provider.of<ProviderDetails>(context).providerDetails;
+
     return Scaffold(
       appBar: MyAppBar('Dashboard', false),
       body: SingleChildScrollView(
@@ -27,7 +31,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             Container(
               // color: Colors.amber,
-              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 0, horizontal: 10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -107,7 +112,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   // )
                   TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, FormScreen.routeName);
+                      // Navigator.pushNamed(context, FormScreen.routeName);
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => FormScreen()));
                     },
                     child: Text('Edit'),
                   )
@@ -129,7 +136,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       Container(
                         width: mediaQuery.size.width * 0.4,
                         height: mediaQuery.size.height * 0.05,
-                        child: Center(child: Text('AC-Type')),
+                        child: Center(
+                            child: FittedBox(
+                                fit: BoxFit.contain,
+                                child: Text(
+                                    detailsProvider['data']['gstNumber']))),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             color: const Color(0xff1f1f1f),
@@ -151,7 +162,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       Container(
                         width: mediaQuery.size.width * 0.4,
                         height: mediaQuery.size.height * 0.05,
-                        child: Center(child: Text('Mercedes')),
+                        child: Center(
+                            child: FittedBox(
+                                child: Text(
+                                    detailsProvider['data']['aadharNumber']))),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             color: const Color(0xff1f1f1f),
@@ -174,7 +188,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       Container(
                         width: mediaQuery.size.width * 0.4,
                         height: mediaQuery.size.height * 0.05,
-                        child: Center(child: Text('AC-Type')),
+                        child: Center(
+                            child: FittedBox(
+                                child:
+                                    Text(detailsProvider['data']['bankName']))),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             color: const Color(0xff1f1f1f),
@@ -196,7 +213,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       Container(
                         width: mediaQuery.size.width * 0.4,
                         height: mediaQuery.size.height * 0.05,
-                        child: Center(child: Text('Mercedes')),
+                        child: Center(
+                            child: FittedBox(
+                                child: Text(
+                                    detailsProvider['data']['bankAccountNo']))),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             color: const Color(0xff1f1f1f),

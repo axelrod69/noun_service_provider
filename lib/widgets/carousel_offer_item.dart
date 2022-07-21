@@ -17,8 +17,8 @@ class CarouselOfferItem extends StatelessWidget {
           boxShadow: const [
             BoxShadow(
               color: Colors.black,
-              offset: Offset(4, 4),
-              blurRadius: 8,
+              offset: Offset(2, 2), //change done
+              blurRadius: 3, //change done
             )
           ]),
     );

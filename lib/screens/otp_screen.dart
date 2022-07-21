@@ -171,8 +171,8 @@ class _OtpScreenState extends State<OtpScreen> {
                         BoxShadow(
                           color: Color(0xff00ffba),
                           offset: Offset(0, 0),
-                          blurRadius: 10,
-                          spreadRadius: 0.5,
+                          blurRadius: 3, //change done
+                          spreadRadius: 0.3, //change done
                         ),
                       ],
                     ),
@@ -199,8 +199,8 @@ class _OtpScreenState extends State<OtpScreen> {
                         BoxShadow(
                           color: Color(0xff00ffba),
                           offset: Offset(0, 0),
-                          blurRadius: 10,
-                          spreadRadius: 0.5,
+                          blurRadius: 3, //change done
+                          spreadRadius: 0.3, //change done
                         ),
                       ],
                     ),
@@ -228,8 +228,8 @@ class _OtpScreenState extends State<OtpScreen> {
                         BoxShadow(
                           color: Color(0xff00ffba),
                           offset: Offset(0, 0),
-                          blurRadius: 10,
-                          spreadRadius: 0.5,
+                          blurRadius: 3, //change done
+                          spreadRadius: 0.3, //change done
                         ),
                       ],
                     ),
@@ -256,8 +256,8 @@ class _OtpScreenState extends State<OtpScreen> {
                         BoxShadow(
                           color: Color(0xff00ffba),
                           offset: Offset(0, 0),
-                          blurRadius: 10,
-                          spreadRadius: 0.5,
+                          blurRadius: 3, //change done
+                          spreadRadius: 0.3, //change done
                         ),
                       ],
                     ),
@@ -331,10 +331,10 @@ class _OtpScreenState extends State<OtpScreen> {
             phoneNumber: phoneNumber);
 
     if (otpResponse['type'] == 'not-exist' &&
-        response['message'] == 'OTP matched') {
-      localStorage.setString('token', response['token']);
+        response['message'] == 'Login success') {
+      print('BLOCKED JOY');
 
-      localStorage.setInt('userId', response['userData'][0]['id']);
+      localStorage.setString('token', response['accessToken']);
 
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(response['message'],
@@ -346,13 +346,15 @@ class _OtpScreenState extends State<OtpScreen> {
             onPressed: () =>
                 ScaffoldMessenger.of(context).hideCurrentSnackBar()),
       ));
- 
-      Navigator.of(context).pushNamed(FormScreen.routeName);
-    } else if (otpResponse['type'] == 'exist' &&
-        response['message'] == 'OTP matched') {
-      localStorage.setString('token', response['token']);
 
-      localStorage.setInt('userId', response['userData'][0]['id']);
+      // Navigator.of(context).pushNamed(FormScreen.routeName);
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => FormScreen()));
+    } else if (otpResponse['type'] == 'exist' &&
+        response['message'] == 'Login success') {
+      print('BLOCKED RICHED');
+
+      localStorage.setString('token', response['accessToken']);
 
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(response['message'],

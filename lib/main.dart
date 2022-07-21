@@ -21,6 +21,9 @@ import 'providers/user_data_container.dart';
 import 'screens/after_slots_remaining_screen.dart';
 import './providers/changeAddress.dart';
 import './providers/addressProvider.dart';
+import './providers/addStation.dart';
+import './providers/stationNameList.dart';
+import './providers/providerDetails.dart';
 
 void main() {
   runApp(MyApp());
@@ -64,7 +67,10 @@ class MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (ctx) => ChargingPortDataContainer()),
         ChangeNotifierProvider(create: (ctx) => UserDataContainer()),
         ChangeNotifierProvider(create: (ctx) => ChangeLocationProvider()),
-        ChangeNotifierProvider(create: (ctx) => LocationProvider())
+        ChangeNotifierProvider(create: (ctx) => LocationProvider()),
+        ChangeNotifierProvider(create: (ctx) => AddStation()),
+        ChangeNotifierProvider(create: (ctx) => StationNameList()),
+        ChangeNotifierProvider(create: (ctx) => ProviderDetails())
       ],
       child: Consumer<UserDataContainer>(
         builder: (ctx, userData, _) => MaterialApp(
@@ -78,17 +84,18 @@ class MyAppState extends State<MyApp> {
               tertiary: const Color(0xff11131b),
             ),
           ),
-          home: LoginScreen(),
+          // home: LoginScreen(),
           // home: BottomNavigation(),
-          // home: isAuth ? BottomNavigation() : LoginScreen(),
+          home: isAuth ? BottomNavigation() : LoginScreen(),
           routes: {
             AddStationScreen.routeName: (context) => AddStationScreen(),
-            FormScreen.routeName: (context) => FormScreen(),
+            // '/form-screen': (context) => FormScreen(),
+            // FormScreen.routeName: (context) => FormScreen(),
             BottomNavigation.routeName: (context) => BottomNavigation(),
             // OtpScreen.routeName: (context) => OtpScreen(),
             QRCodeScreen.routeName: (context) => QRCodeScreen(),
             DashboardScreen.routeName: (context) => DashboardScreen(),
-            JustFor.routeName: (context) => JustFor(),
+            // JustFor.routeName: (context) => JustFor(),
             ChargingPortScreen.routeName: (context) => ChargingPortScreen(),
             SlotBookingScreen.routeName: (context) => SlotBookingScreen(),
             BookingUpcomingScreen.routeName: (context) =>

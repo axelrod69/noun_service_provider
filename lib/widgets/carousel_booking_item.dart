@@ -14,8 +14,8 @@ class CarouselBookingItem extends StatelessWidget {
           boxShadow: const [
             BoxShadow(
               color: Colors.black,
-              offset: Offset(4, 4),
-              blurRadius: 8,
+              offset: Offset(2, 2), //change done
+              blurRadius: 3, //change done
             )
           ]),
       child: Padding(
@@ -39,8 +39,8 @@ class CarouselBookingItem extends StatelessWidget {
                   boxShadow: const [
                     BoxShadow(
                       color: Colors.black,
-                      offset: Offset(4, 4),
-                      blurRadius: 8,
+                      offset: Offset(2, 2), //change done
+                      blurRadius: 3, //change done
                     )
                   ]),
               // padding: EdgeInsets.symmetric(vertical: mediaQuery.height * 0.05),

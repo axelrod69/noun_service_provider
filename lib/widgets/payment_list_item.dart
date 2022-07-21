@@ -16,8 +16,8 @@ class PaymentListItem extends StatelessWidget {
             BoxShadow(
               color: Colors.black,
               offset: Offset(2, 2),
-              blurRadius: 15,
-              spreadRadius: 0.5,
+              blurRadius: 5, //change done
+              spreadRadius: 0.3, //change done
             ),
           ]),
       child: Column(

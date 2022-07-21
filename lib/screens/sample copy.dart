@@ -51,7 +51,7 @@ class HomePageState extends State<HomePage> {
                         BoxShadow(
                             color: Colors.greenAccent,
                             // spreadRadius: 5,
-                            blurRadius: 5,
+                            blurRadius: 3, //change done
                             offset: Offset(0, 2))
                       ]),
                   child: Row(
@@ -92,7 +92,7 @@ class HomePageState extends State<HomePage> {
                   boxShadow: [
                     BoxShadow(
                         color: Colors.grey,
-                        blurRadius: 10,
+                        blurRadius: 5, //change done
                         offset: Offset(1, 2))
                   ]),
               child: Padding(
@@ -139,7 +139,7 @@ class HomePageState extends State<HomePage> {
                               boxShadow: const [
                                 BoxShadow(
                                     color: Colors.grey,
-                                    blurRadius: 10,
+                                    blurRadius: 5, //change done
                                     offset: Offset(1, 2))
                               ]),
                           child: Image.asset('assets/images/presentOrders.png',
@@ -188,7 +188,7 @@ class HomePageState extends State<HomePage> {
                             boxShadow: const [
                               BoxShadow(
                                   color: Colors.grey,
-                                  blurRadius: 10,
+                                  blurRadius: 5, //change done
                                   offset: Offset(1, 2))
                             ]),
                         child: Image.asset('assets/images/orderHistory.png',
@@ -237,7 +237,7 @@ class HomePageState extends State<HomePage> {
                             boxShadow: const [
                               BoxShadow(
                                   color: Colors.grey,
-                                  blurRadius: 10,
+                                  blurRadius: 5, //change done
                                   offset: Offset(1, 2))
                             ]),
                         child: Image.asset('assets/images/cancelledOrders.png',
@@ -286,7 +286,7 @@ class HomePageState extends State<HomePage> {
                             boxShadow: const [
                               BoxShadow(
                                   color: Colors.grey,
-                                  blurRadius: 10,
+                                  blurRadius: 5, //change done
                                   offset: Offset(1, 2))
                             ]),
                         child: Image.asset('assets/images/orderDetails.png',
@@ -335,7 +335,7 @@ class HomePageState extends State<HomePage> {
                             boxShadow: const [
                               BoxShadow(
                                   color: Colors.grey,
-                                  blurRadius: 10,
+                                  blurRadius: 5, //change done
                                   offset: Offset(1, 2))
                             ]),
                         child: Image.asset('assets/images/rating.png',

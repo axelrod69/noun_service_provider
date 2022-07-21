@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-
+import 'package:provider/provider.dart';
 import '../screens/home_screen.dart';
 import '../screens/notifications_screen.dart';
 import '../screens/booking_history_screen.dart';
@@ -8,6 +8,8 @@ import '../screens/payment_history_screen.dart';
 import '../screens/booking_upcoming_screen.dart';
 import '../screens/dashboard_screen.dart';
 import '../screens/just_for.dart';
+import '../providers/stationNameList.dart';
+import '../providers/providerDetails.dart';
 
 class BottomNavigation extends StatefulWidget {
   static const routeName = 'bottom_navigation_bar';
@@ -15,8 +17,28 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class BottomNavigationState extends State<BottomNavigation> {
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    Provider.of<StationNameList>(context, listen: false)
+        .getStationNames()
+        .then((_) {
+      Provider.of<ProviderDetails>(context, listen: false)
+          .getProviderDetails()
+          .then((_) {
+        setState(() {
+          isLoading = false;
+        });
+      });
+    });
+    super.initState();
+  }
+
   final bool pointer = false;
   int index = 2;
+
   final screens = [
     NotificationsScreen(),
     BookingHistoryScreen(),
@@ -66,7 +88,13 @@ class BottomNavigationState extends State<BottomNavigation> {
 
     // TODO: implement build
     return Scaffold(
-      body: screens[index],
+      body: isLoading
+          ? const Center(
+              child: CircularProgressIndicator(
+                color: Colors.green,
+              ),
+            )
+          : screens[index],
       extendBody: true,
       bottomNavigationBar: Container(
         // padding: EdgeInsets.only(top: ),
@@ -74,7 +102,7 @@ class BottomNavigationState extends State<BottomNavigation> {
           BoxShadow(
               color: Theme.of(context).primaryColor,
               // spreadRadius: 1,
-              blurRadius: 15,
+              blurRadius: 5, //change done
               offset: Offset(0, 0))
         ]),
         child: CurvedNavigationBar(

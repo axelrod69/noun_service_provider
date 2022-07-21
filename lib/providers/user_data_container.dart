@@ -17,20 +17,20 @@ class UserDataContainer with ChangeNotifier {
   late String _token;
   late String otp;
 
-  bool get isAuthenticated {
-    return token != null;
-  }
+  // bool get isAuthenticated {
+  //   return token != null;
+  // }
 
-  int get id {
-    return userID;
-  }
+  // int get id {
+  //   return userID;
+  // }
 
-  String? get token {
-    if (_token != null) {
-      return _token;
-    }
-    return null;
-  }
+  // String? get token {
+  //   if (_token != null) {
+  //     return _token;
+  //   }
+  //   return null;
+  // }
 
   Future<Map<String, dynamic>> submitOTP(
       {required BuildContext context,
